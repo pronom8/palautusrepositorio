@@ -14,7 +14,7 @@ class PlayerReaderStub:
 
 class TestStatisticsService(unittest.TestCase):
     def setUp(self):
-        # injektoi PlayerReaderStub StatisticsService-luokkaan
+        
         self.stats = StatisticsService(PlayerReaderStub())
 
     def test_search_finds_player(self):
@@ -28,24 +28,24 @@ class TestStatisticsService(unittest.TestCase):
 
     def test_team_returns_correct_players(self):
         team_players = self.stats.team("EDM")
-        self.assertEqual(len(team_players), 3)  # EDM:llä on kolme pelaajaa
+        self.assertEqual(len(team_players), 3)  
         self.assertEqual(team_players[0].name, "Semenko")
         self.assertEqual(team_players[1].name, "Kurri")
         self.assertEqual(team_players[2].name, "Gretzky")
 
     def test_top_returns_top_players(self):
-        top_players = self.stats.top(2)  # Palautetaan 3 parasta (how_many + 1)
+        top_players = self.stats.top(2)  
         self.assertEqual(len(top_players), 3)
-        self.assertEqual(top_players[0].name, "Gretzky")  # Paras pelaaja
-        self.assertEqual(top_players[1].name, "Lemieux")  # Toinen paras
-        self.assertEqual(top_players[2].name, "Yzerman")  # Kolmas paras
+        self.assertEqual(top_players[0].name, "Gretzky")  
+        self.assertEqual(top_players[1].name, "Lemieux")  
+        self.assertEqual(top_players[2].name, "Yzerman") 
 
     def test_top_does_not_fail_with_zero(self):
         top_players = self.stats.top(0)
-        self.assertEqual(len(top_players), 1)  # Vain paras pelaaja
+        self.assertEqual(len(top_players), 1)  
         self.assertEqual(top_players[0].name, "Gretzky")
 
     def test_top_does_not_fail_if_how_many_is_greater_than_list_size(self):
-        top_players = self.stats.top(10)  # Pelaajia on vain 5
+        top_players = self.stats.top(10)  
         self.assertEqual(len(top_players), 5)
 
