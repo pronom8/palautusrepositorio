@@ -19,8 +19,9 @@ class ProjectReader:
         # deserialisoi TOML-formaatissa oleva merkkijono ja muodosta Project-olio sen tietojen perusteella
         project_info = filtteröity["tool"]["poetry"]
         name = project_info.get("name", "Unknown name")
+        authors = project_info.get("authors", "Unkown authors")
         description = project_info.get("description", "No description")
         dependencies = list(project_info.get("dependencies", {}).keys())
         dev_dependencies = list(project_info.get("group", {}).get("dev", {}).get("dependencies", {}).keys())
 
-        return Project(name, description, dependencies, dev_dependencies)
+        return Project(name, description, dependencies, dev_dependencies, authors)
