@@ -20,8 +20,9 @@ class ProjectReader:
         project_info = filtteröity["tool"]["poetry"]
         name = project_info.get("name", "Unknown name")
         authors = project_info.get("authors", "Unkown authors")
+        license = project_info.get("licence", "no licence")
         description = project_info.get("description", "No description")
         dependencies = list(project_info.get("dependencies", {}).keys())
         dev_dependencies = list(project_info.get("group", {}).get("dev", {}).get("dependencies", {}).keys())
 
-        return Project(name, description, dependencies, dev_dependencies, authors)
+        return Project(name, description, dependencies, dev_dependencies, authors, license)
