@@ -14,7 +14,7 @@ class Project:
         return (
             f"Name: {self.name}"
             f"\nDescription: {self.description or '-'}"
-            f"Authors: {self.authors}"
+            
             f"\nLicense: {self.license}\n"
             f"\nAuthors:\n{self._stringify_list(self.authors)}"
             f"\n\nDependencies:\n{self._stringify_list(self.dependencies)}"
