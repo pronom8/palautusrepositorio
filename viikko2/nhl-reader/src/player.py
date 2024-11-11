@@ -6,7 +6,10 @@ class Player:
         self.assists = dict.get('assists', 0)
         self.nationality = dict.get('nationality', 'N/A')
 
+    def kaikki_pisteet(self):
+        return self.goals + self.assists
+
     
     def __str__(self):
-        return f"{self.name} team {self.team}  goals {self.goals} assists {self.assists}"
+        return f"{self.name:20} {self.team:3}  {self.goals} + {self.assists} = {self.kaikki_pisteet()}"
 
