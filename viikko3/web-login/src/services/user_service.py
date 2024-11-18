@@ -39,6 +39,20 @@ class UserService:
     def validate(self, username, password, password_confirmation):
         if not username or not password:
             raise UserInputError("Username and password are required")
+        if len(username)<3:
+            raise AuthenticationError("Username is too short")
+        if len(password)<5:
+            raise AuthenticationError("Password is too short") 
+        if not any(char.isdigit() for char in password):
+            raise AuthenticationError("Password must contain at least one number and one uppercase letter")
+        if not any(char.isupper() for char in password):
+            raise AuthenticationError("Password must contain at least one number and one uppercase letter")
+        if password != password_confirmation:
+            raise AuthenticationError("Passwords do not match")
+      #  if username in :
+       #     raise AuthenticationError("Username is already in use")
+        
+            
 
         # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
 

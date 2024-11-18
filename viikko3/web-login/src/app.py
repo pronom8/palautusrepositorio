@@ -78,7 +78,7 @@ def handle_register():
     username = request.form.get("username")
     password = request.form.get("password")
     password_confirmation = request.form.get("password_confirmation")
-
+    
     try:
         user_service.create_user(username, password, password_confirmation)
         return redirect_to_welcome()

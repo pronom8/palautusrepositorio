@@ -27,7 +27,7 @@ class UserRepository:
 
         if existing_user:
             raise Exception(
-                f"User with username {user.username} already exists"
+                f"User with that username already exists"
             )
 
         users.append(user)
